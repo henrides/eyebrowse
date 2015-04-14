@@ -1,5 +1,7 @@
 
 $(function () {
+	var trackerId = 'scroller';
+
 	function createScrollerRegion(region) {
 		$body.append('<div id="eb-'+region+'-scroller">&nbsp;</div>');
 		$('#eb-'+region+'-scroller').css({
@@ -77,5 +79,5 @@ $(function () {
 		}
 	});
 
-	self.port.emit('trackGazeRegion', regions);
+	self.port.emit('trackGazeRegion', trackerId, regions);
 });

@@ -1,4 +1,7 @@
-
+/*
+ * Copyright (c) 2015, Marc-Olivier Mercier
+ * All rights reserved
+ */
 $(function () {
 	var trackerId = 'scroller';
 

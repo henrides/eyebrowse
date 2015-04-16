@@ -2,8 +2,8 @@
   "name": "eyebrowse",
   "title": "eyebrowse",
   "id": "jid1-EEq7bF1SQdqLAg",
-  "description": "a basic add-on",
-  "author": "",
-  "license": "MPL 2.0",
+  "description": "Control the browser with your eyes",
+  "author": "Marc-Olivier Mercier",
+  "license": "BSD",
   "version": "0.1"
 }

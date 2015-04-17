@@ -3,9 +3,7 @@
  * All rights reserved
  */
 $(function () {
-    var trackerId = 'pointer';
-
-    self.port.on('gazePosition', function (position) {
+	eyeBrowse.registerPositionListener(function (position) {
         $('#eb-pointer').css({
             'top': position.top,
             'left': position.left
@@ -20,15 +18,14 @@ $(function () {
                 $('#eb-pointer').css({
                     'position': 'fixed',
                     'background-color': 'black',
+					'pointer-events': 'none',
                     'height': '5px',
                     'width': '5px'
                 });
                 togglePointer = true;
-                self.port.emit('trackGazePosition', trackerId);
             } else {
                 $('#eb-pointer').remove();
                 togglePointer = false;
-                self.port.emit('stopTracking', trackerId);
             }
         }
     });

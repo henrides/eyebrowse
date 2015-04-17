@@ -3,8 +3,6 @@
  * All rights reserved
  */
 $(function () {
-    var trackerId = 'clicker';
-
     var toggleTabbable = false;
     $('body').keydown(function(key){
         if (key.altKey && key.ctrlKey) {

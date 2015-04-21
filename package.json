@@ -5,5 +5,27 @@
   "description": "Control the browser with your eyes",
   "author": "Marc-Olivier Mercier",
   "license": "BSD",
-  "version": "0.1"
+  "version": "0.1",
+  "preferences": [{
+      "name": "clicker",
+      "title": "Clicker",
+      "description": "Enable the clicker feature",
+      "type": "bool",
+      "value": true
+  },
+  {
+      "name": "scroller",
+      "title": "Scroller",
+      "description": "Enable the automatic scroller feature",
+      "type": "bool",
+      "value": true
+  },
+  {
+      "name": "pointer",
+      "title": "Debug pointer",
+      "hidden": true,
+      "description": "Enable the pointer for debug purpose",
+      "type": "bool",
+      "value": true
+  }]
 }

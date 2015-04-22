@@ -21,7 +21,6 @@ $(function () {
     var scrollDownInterval = null;
     var scrollUpInterval = null;
 
-    var $body = $('body');
     var innerHeight = window.innerHeight;
     var innerWidth = window.innerWidth;
 
@@ -48,10 +47,12 @@ $(function () {
                     region.isActive = true;
                     if (region.name === 'bottom') {
                         if (scrollDownInterval === null) {
+                            $('#eb-bottom-scroller').css({'opacity': '0.2'});
                             scrollDownInterval = setInterval(scrollDown, 50);
                         }
                     } else if (region.name === 'top') {
                         if (scrollUpInterval === null) {
+                            $('#eb-top-scroller').css({'opacity': '0.2'});
                             scrollUpInterval = setInterval(scrollUp, 50);
                         }
                     }
@@ -61,11 +62,13 @@ $(function () {
                     region.isActive = false;
                     if (region.name === 'bottom') {
                         if (scrollDownInterval !== null) {
+                            $('#eb-bottom-scroller').css({'opacity': '0.1'});
                             clearInterval(scrollDownInterval);
                             scrollDownInterval = null;
                         }
                     } else if (region.name === 'top') {
                         if (scrollUpInterval !== null) {
+                            $('#eb-top-scroller').css({'opacity': '0.1'});
                             clearInterval(scrollUpInterval);
                             scrollUpInterval = null;
                         }
@@ -75,85 +78,22 @@ $(function () {
         }
     });
 
-    /*
     function createScrollerRegion(region) {
-        $body.append('<div id="eb-'+region+'-scroller">&nbsp;</div>');
-        $('#eb-'+region+'-scroller').css({
+        $('body').append('<div id="eb-'+region.name+'-scroller">&nbsp;</div>');
+        $('#eb-'+region.name+'-scroller').css({
             'background-color': '#75f617',
             'opacity': '0.1',
-            //'pointer-events': 'none',
+            'pointer-events': 'none',
             'position': 'fixed',
-            'top': regions[region].position.top,
-            'left': regions[region].position.left,
-            'height' : regions[region].dimension.height,
-            'width': regions[region].dimension.width
+            'top': region.position.top,
+            'left': region.position.left,
+            'height' : region.dimension.height,
+            'width': region.dimension.width
         });
     }
 
-    for (region in regions) {
-        createScrollerRegion(region);
+    for (var i = 0; i < regions.length; ++i) {
+        createScrollerRegion(regions[i]);
     }
 
-    $('#eb-bottom-scroller').on('gazeEnter', function () {
-        $('#eb-bottom-scroller').css({'opacity': '0.2'});
-        if (scrollDownInterval === null) {
-            scrollDownInterval = setInterval(scrollDown, 50);
-        }
-    });
-
-    $('#eb-bottom-scroller').on('gazeLeave', function () {
-        $('#eb-bottom-scroller').css({'opacity': '0.1'});
-        if (scrollDownInterval !== null) {
-            clearInterval(scrollDownInterval);
-            scrollDownInterval = null;
-        }
-    });
-
-    $('#eb-top-scroller').on('gazeEnter', function () {
-        $('#eb-top-scroller').css({'opacity': '0.2'});
-        if (scrollUpInterval === null) {
-            scrollUpInterval = setInterval(scrollUp, 50);
-        }
-    });
-
-    $('#eb-top-scroller').on('gazeLeave', function () {
-        $('#eb-top-scroller').css({'opacity': '0.1'});
-        if (scrollUpInterval !== null) {
-            clearInterval(scrollUpInterval);
-            scrollUpInterval = null;
-        }
-    });
-    */
-
-    /*
-    self.port.on('gazeRegionEnter', function (region) {
-        $('#eb-'+region+'-scroller').css({'opacity': '0.2'});
-        if (region === 'bottom') {
-            if (scrollDownInterval === null) {
-                scrollDownInterval = setInterval(scrollDown, 50);
-            }
-        } else if (region === 'top') {
-            if (scrollUpInterval === null) {
-                scrollUpInterval = setInterval(scrollUp, 50);
-            }
-        }
-    });
-
-    self.port.on('gazeRegionLeave', function (region) {
-        $('#eb-'+region+'-scroller').css({'opacity': '0.1'});
-        if (region === 'bottom') {
-            if (scrollDownInterval !== null) {
-                clearInterval(scrollDownInterval);
-                scrollDownInterval = null;
-            }
-        } else if (region === 'top') {
-            if (scrollUpInterval !== null) {
-                clearInterval(scrollUpInterval);
-                scrollUpInterval = null;
-            }
-        }
-    });
-
-    self.port.emit('trackGazeRegion', trackerId, regions);
-    */
 });

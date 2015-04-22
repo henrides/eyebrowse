@@ -23,9 +23,8 @@
   {
       "name": "pointer",
       "title": "Debug pointer",
-      "hidden": true,
       "description": "Enable the pointer for debug purpose",
       "type": "bool",
-      "value": true
+      "value": false
   }]
 }
